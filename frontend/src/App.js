@@ -1,23 +1,78 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+class Students extends Component {
+  render() {
+    return (
+      <div className="Students">
+
+      </div>
+    );
+  }
+}
+
+class Lessons extends Component {
+  render() {
+    return (
+      <div className="Lessons">
+
+      </div>
+    );
+  }
+}
+
+class Today extends Component {
+    render() {
+      return (
+        <div className="Today">
+  
+        </div>
+      );
+    }
+}
+
+class Calendar extends Component {
+  render() {
+    return (
+      <div className="Calendar">
+
+      </div>
+    );
+  }
+}
+
+class WorkArea extends Component {
+  render() {
+    return (
+      <div className="WorkArea">
+        <Calendar />
+        <Today />
+        <Lessons />
+        <Students />
+      </div>
+    );
+  }
+}
+
+class Menu extends Component {
+  render() {
+    return (
+      <div className="Menu">
+      
+      </div>
+    );
+  }
+}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Spring Boot React Starter!</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Menu />
+        <WorkArea />
       </div>
     );
   }
 }
 
 export default App;
-
-// this comment was made for initial commit for new branch
