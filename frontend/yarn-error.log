@@ -19,6 +19,7 @@ npm manifest:
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+      "npm-run-all": "^4.1.2",
       "react": "^15.6.1",
       "react-dom": "^15.6.1"
     },
@@ -26,6 +27,8 @@ npm manifest:
       "react-scripts": "1.0.7"
     },
     "scripts": {
+      "build-css": "less-watch-compiler --run-once src src",
+      "watch-css": "less-watch-compiler src src",
       "start": "react-scripts start",
       "build": "react-scripts build",
       "test": "react-scripts test --env=jsdom",
