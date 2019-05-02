@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+
+import Home from './Components/Home/Home';
+import Dashboard from './Components/Dashboard/Dashboard';
+
+import Callback from './Utils/Callback/Callback';
+import Auth from './Utils/Auth/Auth';
+import history from './history';
+
+const auth = new Auth();
+
+const handleAuthentication = ({location}) => {
+  if (/access_token|id_token|error/.test(location.hash)) {
+    auth.handleAuthentication();
+  }
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Spring Boot React Starter!</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Switch history={history}>
+        <Route exact path='/' render={(props) => <Home auth={auth} {...props} />}/>
+        <Route path='/dashboard' render={(props) => <Dashboard auth={auth} {...props} />} />
+        <Route path="/callback" render={(props) => {
+            handleAuthentication(props);
+            return <Callback {...props} /> 
+        }}/>
+      </Switch>
     );
   }
 }
